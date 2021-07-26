@@ -1,18 +1,19 @@
 from django.http import JsonResponse, request
-from .models import User
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
 
+from .models import User
 from .serializers.common import UserSerializer
+from .serializers.populated import PopulatedUserSerializer
 
 class UserListView(APIView):
 
     def get(self, _request):
         users = User.objects.all() # get everything from the shows table in the db
-        serialized_users = UserSerializer(users, many=True) # transform data into python by running through serializer
+        serialized_users = PopulatedUserSerializer(users, many=True) # transform data into python by running through serializer
         return Response(serialized_users.data, status=status.HTTP_200_OK) # return data and status code
 
 
@@ -35,7 +36,7 @@ class UserDetailView(APIView):
 
     def get(self, _request, pk):
         user = self.get_user(pk=pk)
-        serialized_user = UserSerializer(user)
+        serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data, status=status.HTTP_200_OK)
 
     def delete(self, _request, pk):

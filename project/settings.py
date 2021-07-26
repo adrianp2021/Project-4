@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'users'
+    'users',
+    'interests',
+    'comments'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ DATABASES = { # added this to use postgres as the database instead of the defaul
         'NAME': 'dating-app',
         'HOST': 'localhost',
         'PORT': 5432
- }
+    }
 }
 
 # Password validation
