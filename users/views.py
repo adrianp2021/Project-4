@@ -4,13 +4,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import User
 from .serializers.common import UserSerializer
 from .serializers.populated import PopulatedUserSerializer
 
 class UserListView(APIView):
-
+    permission_classes = (IsAuthenticatedOrReadOnly, )  #this will apply to everything inside of this class
     def get(self, _request):
         users = User.objects.all() # get everything from the shows table in the db
         serialized_users = PopulatedUserSerializer(users, many=True) # transform data into python by running through serializer
@@ -27,7 +28,8 @@ class UserListView(APIView):
         return Response(user_to_add.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 class UserDetailView(APIView):
-
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+    
     def get_user(self, pk):
         try:
             return User.objects.get(pk=pk)
