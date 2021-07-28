@@ -6,7 +6,7 @@ from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import jwt
-from .serializer import newUserSerializer
+from .serializer import UserSerializer
 
 
 newUser = get_user_model()
@@ -14,10 +14,12 @@ newUser = get_user_model()
 class RegisterView(APIView):
 
     def post(self, request):
-        user_to_create = newUserSerializer(data=request.data)  # when taking JSON in, needs to be serialized first and sent to db
+        user_to_create = UserSerializer(data=request.data)  # when taking JSON in, needs to be serialized first and sent to db
+        print('user to create', request.data)
         if user_to_create.is_valid():
             user_to_create.save()
             return Response({ 'message': 'Registration successful'}, status=status.HTTP_202_ACCEPTED)
+        print('user to create errors', user_to_create.errors)
         return Response(user_to_create.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 

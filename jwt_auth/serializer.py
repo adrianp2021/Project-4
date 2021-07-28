@@ -3,9 +3,9 @@ from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 
-newUser = get_user_model()
+user = get_user_model()
 
-class newUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
 
@@ -31,7 +31,7 @@ class newUserSerializer(serializers.ModelSerializer):
         return data 
 
     class Meta:
-      model = newUser
+      model = user
       fields = '__all__'
 
   

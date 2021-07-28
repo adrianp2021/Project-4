@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'jwt_auth.newUser'  # tells django that it needs to use our custom user and not its own
+AUTH_USER_MODEL = 'jwt_auth.User'  # tells django that it needs to use our custom user and not its own
 
 
 #specifying to Django that I want returned everything that is JSON.

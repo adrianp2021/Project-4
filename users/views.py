@@ -6,29 +6,19 @@ from rest_framework import status
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .models import User
+from jwt_auth.models import User
 from .serializers.common import UserSerializer
 from .serializers.populated import PopulatedUserSerializer
 
 class UserListView(APIView):
-    permission_classes = (IsAuthenticatedOrReadOnly, )  #this will apply to everything inside of this class
+    # permission_classes = (IsAuthenticatedOrReadOnly, )  #this will apply to everything inside of this class
     def get(self, _request):
         users = User.objects.all() # get everything from the shows table in the db
         serialized_users = PopulatedUserSerializer(users, many=True) # transform data into python by running through serializer
         return Response(serialized_users.data, status=status.HTTP_200_OK) # return data and status code
 
-
-
-    def post(self, request):
-      # print('Requesting data', request.data)
-        user_to_add = UserSerializer(data=request.data)
-        if user_to_add.is_valid():
-            user_to_add.save()
-            return Response(user_to_add.data, status=status.HTTP_201_CREATED)
-        return Response(user_to_add.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
 class UserDetailView(APIView):
-    permission_classes = (IsAuthenticatedOrReadOnly, )
+    # permission_classes = (IsAuthenticatedOrReadOnly, )
     
     def get_user(self, pk):
         try:

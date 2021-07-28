@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import User
+from jwt_auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

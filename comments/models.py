@@ -5,14 +5,14 @@ class Comment(models.Model):
     text = models.TextField(max_length=400)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(
-        "users.User",
+        "jwt_auth.User",
         related_name = "comments",
         on_delete = models.CASCADE,  # if a user is deleted, all the comments will also be deleted
         default=1
     )
     owner = models.ForeignKey(
-        "jwt_auth.newUser",
-        related_name="comments",
+        "jwt_auth.User",
+        related_name="users",
         on_delete = models.CASCADE
     )
 

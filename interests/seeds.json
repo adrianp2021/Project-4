@@ -1,0 +1,72 @@
+[
+  {
+    "model": "interests.interest",
+    "pk": 1,
+    "fields": {
+      "label":"Airsoft"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 2,
+    "fields": {
+      "label":"Coding"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 3,
+    "fields": {
+      "label":"Cooking"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 4,
+    "fields": {
+      "label":"Exercise"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 5,
+    "fields": {
+      "label":"Gaming"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 6,
+    "fields": {
+      "label":"Music"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 7,
+    "fields": {
+      "label":"Photography"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 8,
+    "fields": {
+      "label":"Reading"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 9,
+    "fields": {
+      "label":"Social Media"
+    }
+  },
+  {
+    "model": "interests.interest",
+    "pk": 10,
+    "fields": {
+      "label":"Travelling"
+    }
+  }
+]
