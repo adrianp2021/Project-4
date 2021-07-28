@@ -29,10 +29,12 @@ class LoginView(APIView):
         #check if there is a user in db with the email user is trying to login with (email will be used as unique identifier, secondly, check if password is correct, Django will decode it, check it matches with password that exists in db; return error if its not the case). lastly, generate a token, so user can be identified; return token to client 
         email = request.data.get('email')
         password = request.data.get('password')
-
+        print('request', request.data)
         try: 
             user_to_login = newUser.objects.get(email=email)
+            print('user to login', user_to_login)
         except newUser.DoesNotExist:
+            print('new user', newUser)
             raise PermissionDenied(detail='Invalid Credentials')
         if not user_to_login.check_password(password):
             raise PermissionDenied(detail='Invalid Credentials')
