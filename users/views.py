@@ -13,6 +13,9 @@ from .serializers.populated import PopulatedUserSerializer
 class UserListView(APIView):
     # permission_classes = (IsAuthenticatedOrReadOnly, )  #this will apply to everything inside of this class
     def get(self, _request):
+        
+        # interest_ids = _request.GET.get('ids').split(',')
+        # print('interest ids', interest_ids)
         users = User.objects.all() # get everything from the shows table in the db
         serialized_users = PopulatedUserSerializer(users, many=True) # transform data into python by running through serializer
         return Response(serialized_users.data, status=status.HTTP_200_OK) # return data and status code
