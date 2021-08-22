@@ -1,6 +1,12 @@
-import os
 
+
+import os
 from pathlib import Path
+
+
+
+
+
 
 """
 Django settings for project project.
@@ -127,11 +133,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -153,8 +154,10 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'project.urls' #check if you have this already, if not add it in
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/' # same with this
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'client', "build", "static/"),
+    os.path.join(BASE_DIR, 'client', "build", "static"),
 )
