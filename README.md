@@ -24,7 +24,13 @@ Crumble is a Full-Stack dating app, which allows users to register and/or login,
 
 * Timeframe: 8 days
 
+## Known bugs or errors
 
+## Wins and Blockers
+
+## Future Features
+
+## Key learnings
 
 
 
